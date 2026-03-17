@@ -116,7 +116,7 @@ function populateSketch(obj) {
 	let sketchArt = obj.art.filter(item => item.type == "sketch");
 	for (const piece of sketchArt) {
 		sketch.innerHTML +=
-		`<a href="./${piece.img}" data-lightbox="main"
+		`<a href="./${piece.img}" data-lightbox="sketch"
 		data-title="${piece.year} / ${piece.medium}<br>${piece.caption}">
 		<img loading="lazy" src="./${piece.img}" alt=""></a>`;
 	}
@@ -126,7 +126,7 @@ function populateOther(obj) {
 	let otherArt = obj.art.filter(item => item.type == "other");
 	for (const piece of otherArt) {
 		other.innerHTML +=
-		`<a href="./${piece.img}" data-lightbox="main"
+		`<a href="./${piece.img}" data-lightbox="other"
 		data-title="${piece.year} / ${piece.medium}<br>${piece.caption}">
 		<img loading="lazy" src="./${piece.img}" alt=""></a>`;
 	}
