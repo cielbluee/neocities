@@ -1,11 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./graphics/pixel/wing-left.gif">
+  <link rel="stylesheet" href="./assets/css/cloud.css">
+  <link rel="stylesheet" href="./assets/css/index.css">
+  <link rel="stylesheet" href="./assets/css/common.css">
+  <title>Dear my angel...</title>
 </head>
 <body>
-	<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum repellat doloremque perferendis dolorum asperiores itaque earum tempore. Ipsa omnis veritatis harum similique, tempore velit laboriosam pariatur, quibusdam earum consequuntur alias.</p>
+<header>
+	<svg viewBox="0 0 800 100" xmlns="http://www.w3.org/2000/svg" width="800" height="100">
+		<text x="50" y="95">cielblue<tspan>.net</tspan></text>
+	</svg>
+	<div id="dove"></div>
+</header>
+<main>
+  <h1 class="h">Home</h1>
+  <div class="a">
+    <p>Welcome to <i>cielblue.net</i>, my personal site and little corner of the internet. I use this place as my personal haven and to share my creations. This place is ultimately self-serving, but I still hope you enjoy your time here! <span style="text-wrap: nowrap">(*´ω｀*)</span></p>
+		<p>This site makes use of JavaScript, if you have it disabled some features may not work.</p>
+    <div class="divider"></div>
+    <p>If you like my site or have something to say, please sign my <a target="_blank" href="https://obliqueangel.atabook.org/">guestbook</a>! ⊂((・▽・))⊃</p>
+    <img src="./graphics/stamp/cloud.png" alt="cloud stamp"><img src="./graphics/stamp/rainbow.png" alt="rainbow stamp"><img src="./graphics/stamp/daydreamer.gif" alt="daydreamer stamp">
+  </div>
+</main>
+<nav>
+  <h2 class="h">Navigation</h2>
+  <div class="a">
+    <a href="./sitemap.html">Sitemap</a>
+    <a href="./creative/art/">Art</a>
+    <a>Webmaster</a>
+		<p>More to be added...</p>
+  </div>
+</nav>
+<section id="update">
+  <h2 class="h">Update</h2>
+  <div class="a">
+		<div id="latestUpdate"></div>
+    <a href="./sitely/update.html">See Archive...</a>
+<script>
+async function populate() {
+	const requestURL = './assets/feed/update.json';
+	const request = new Request(requestURL);
+	const response = await fetch(request);
+	const json = await response.text();
+	const updates = JSON.parse(json);
+	populateLatestUpdate(updates);
+}
+function populateLatestUpdate(obj) {
+	const header = document.querySelector('#latestUpdate');
+	header.innerHTML = `
+	<time>${obj.update[0].date}</time>
+	<p>${obj.update[0].body}</p>
+	`;
+}
+populate();
+</script>
+  </div>
+</section>
+<section id="art">
+  <h2 class="h">Latest Art</h2>
+  <div class="a">
+		<div id="latestArt"></div>
+    <a href="./creative/art/">See More...</a>
+<script>
+async function populate() {
+	const requestURL = './assets/feed/art.json';
+	const request = new Request(requestURL);
+	const response = await fetch(request);
+	const json = await response.text();
+	const art = JSON.parse(json);
+	populateLatestArt(art);
+}
+function populateLatestArt(obj) {
+	const header = document.querySelector('#latestArt');
+	header.innerHTML = `<time>${obj.art[0].date}</time>
+	<img src="./creative/art/${obj.art[0].img}" alt="${obj.art[0].alt}">
+	<p>${obj.art[0].caption}</p>
+	`;
+}
+populate();
+</script>
+  </div>
+</section>
+<section id="song">
+  <h2 class="h">Song in My Head</h2>
+  <div class="a">
+		<iframe src="https://youtube.com/embed/BBka5TUq7U8?controls=0"></iframe>
+  </div>
+</section>
+<section id="rings">
+  <h2 class="h">Webrings</h2>
+  <div class="a">
+		<div><!--no ai webring-->
+			<a href="https://baccyflap.com/noai/?prv&s=obl" target="_top">« prev</a> |
+			<a href="https://baccyflap.com/noai" target="_blank">no ai webring</a>
+			<a style="font-size:60%" href="https://baccyflap.com/noai/?rnd" target="_top">(random)</a> |
+			<a href="https://baccyflap.com/noai/?nxt&s=obl" target="_top">next »</a>
+		</div>
+  </div>
+</section>
+<section id="rss">
+  <!--<h2 class="h">Monthly RSS <a><img src="./assets/image/rss-icon.png" title="RSS Feed" style="height: 1rem;"></a></h2>-->
+	<h2 class="h">Placeholder</h2>
+  <div class="a">
+		Coming soon...
+  </div>
+</section>
+<div id="graphic">
+  <img src="./graphics/blinkie/blue-sky.gif" alt="I love the blue sky blinkie">
+	<img src="./graphics/blinkie/clear-day.gif" alt="On a clear day... blinkie"><br>
+	<img src="./graphics/button/sky.png" alt="sky button">
+	<img src="./graphics/blinkie/reach-sky.gif" alt="reach the sky blinkie">
+	<img src="./graphics/blinkie/fly-away.gif" alt="I wanna fly away blinkie">
+	<img src="./graphics/button/cloudy-sky.gif" alt="cloudy sky blinkie">
+	<img src="./graphics/blinkie/cloudy.gif" alt="Cloudy... blinkie">
+	<img src="./graphics/blinkie/sky.gif" alt="sky blinkie">
+</div>
+<footer class="h">cielblue.net &copy; 2026</footer>
+<!--
+<div id="float">
+	<img src="./assets/image/cloud.png" alt="cloud" style="top: 10px;animation-delay: 1s;">
+	<img src="./assets/image/cloud.png" alt="cloud" style="top: 70px;animation-delay: 3s;width: 120px;">
+	<img src="./assets/image/cloud.png" alt="cloud" style="bottom: 50px;animation-delay: 31s;">
+	<img src="./assets/image/cloud.png" alt="cloud" style="bottom: 40px;animation-delay: 33s;width: 120px;">
+</div>
+-->
 </body>
 </html>

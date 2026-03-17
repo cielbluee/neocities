@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../graphics/pixel/wing-left.gif">
+  <link rel="stylesheet" href="../assets/css/cloud.css">
+  <link rel="stylesheet" href="../assets/css/common.css">
+  <title>Updates</title>
+<style>
+body {max-width: 600px;margin: 10px auto;border-radius: 10px;}
+time {display: block;margin-bottom: 5px;font-weight: bold;border-block-end: 1px dashed var(--ob);}
+</style>
+</head>
+<body>
+<h1 class="h">Update Archive</h1>
+<header class="a">
+  <nav>
+  <a href="../">Home</a>
+  <a href="../sitemap.html">Sitemap</a>
+	</nav>
+</header>
+<main class="a">
+  <div id="output"></div>
+</main>
+<script>
+async function populate() {
+	const requestURL = '../assets/feed/update.json';
+	const request = new Request(requestURL);
+	const response = await fetch(request);
+	const json = await response.text();
+	const updates = JSON.parse(json);
+	populateUpdates(updates);
+}
+function populateUpdates(obj) {
+	const output = document.querySelector('#output');
+	const updates = obj.update;
+	for (const entry of updates) {
+		output.innerHTML +=
+		`<div><time>${entry.date}</time><p>${entry.body}</p></div>
+		<div class="divider"></div>`;
+	}
+}
+populate();
+</script>
+</body>
+</html>
