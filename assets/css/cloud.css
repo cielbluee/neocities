@@ -1,0 +1,69 @@
+@font-face {
+  font-family: gothik;
+  src: url('../other/font_gothik-steel.ttf');
+}
+:root {
+  --ow: #f3fbff;
+  --lb: #def3ff;
+  --ob: #001559;
+}
+body, .h, div, .a, img {box-sizing: border-box;}
+html {background: var(--lb) url('../bg/Bumpy_Sky-Blue_02-512x512.png');}
+body {
+	box-sizing: content-box;
+  color: var(--ob);
+	font-family: 'Times New Roman', Times, serif;
+  background: linear-gradient(#fff 5%, rgba(255, 255, 255, 0.5) 10% 80%, #fff 100%);
+  border: 5px var(--lb) ridge;
+	border-radius: 10px;
+	outline: 3px solid #fff;
+}
+.h {
+  padding: 2px;
+  text-align: center;
+  background: var(--lb) linear-gradient(var(--ow) 5%, var(--lb) 45%, #b9daf8 70%, var(--ow));
+  border: 1px var(--ob) outset;
+  border-radius: 5px;
+  text-shadow: 3px 0 5px #fff, -3px 0 5px #fff, 0 3px 5px #fff, 0 -3px 5px #fff;
+}
+.a {
+  background: #fff;
+  border: 7px solid;
+  border-image: url('../../graphics/other/border_white-round.png') 8 round;
+  border-radius: 15px;
+}
+nav {
+  a {
+    display: list-item;
+    list-style: url('../../graphics/pixel/wing-left.gif') inside;
+    color: inherit;
+    text-decoration: wavy underline 1px;
+    transition: all 0.3s;
+    &:hover {letter-spacing: 2px;}
+  }
+}
+a {color: #003ec4; &:visited {color: #0006aa;}}
+.divider {
+  width: 100%;
+  height: 9px;
+  margin-bottom: 10px;
+  background: transparent url('../../graphics/other/divider_blue-star.png');
+}
+#float img {
+  position: absolute;
+  z-index: -1;
+  opacity: .5;
+  animation: 60s linear infinite float;
+}
+@keyframes float {
+  from {right: -200px;}
+  to {right: calc(100vw + 200px);}
+}
+@media (max-width: 800px) {
+  #float {display: none;}
+}
+::-webkit-scrollbar-thumb {
+  background: var(--lb) linear-gradient(to right, var(--ow) 5%, var(--lb) 45%, #b9daf8 70%, var(--ow));
+  border: 1px var(--ob) outset;
+  border-radius: 5px;
+}

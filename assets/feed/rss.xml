@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+
+	<channel>
+		<title>cielblue.net Monthly Updates</title>
+		<link>https://cielblue.net/</link>
+		<description>Personal site where I upload my art and stuff. I will compile all the updates in a month into a single RSS post.</description>
+		<webMaster>cielblue@disroot.org (Ciel)</webMaster>
+		<image>
+			<url>https://hat.neocities.org/img/decor/hinaNFT.jpg</url>
+			<title>cielblue.net Monthly Updates</title>
+			<link>https://hat.neocities/microblog</link>
+	</image>
+
+		<item>
+			<guid isPermaLink="false">001</guid>
+			<title>title of the update 1</title>
+			<pubDate>Sun, 01 Mar 2026 00:00:00 +0800</pubDate>
+			<link>https://cielblue.net</link>
+			<description>this is a description of the update</description>
+		</item>
+
+	</channel>
+</rss>
