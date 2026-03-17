@@ -58,7 +58,7 @@ nav {grid-area: nav;}
     width: 100%;
     border: none;
 		border-radius: 5px;
-    filter: sepia(1) hue-rotate(170deg) saturate(3) brightness(2);
+    filter: sepia(1) hue-rotate(170deg) saturate(3);
   }
 }
 #rings {grid-area: rings;text-align: center;* {color: inherit;}}
