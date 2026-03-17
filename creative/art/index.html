@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../graphics/pixel/wing-left.gif">
+  <link rel="stylesheet" href="../../assets/css/cloud.css">
+  <link rel="stylesheet" href="../../assets/css/common.css">
+	<link rel="stylesheet" href="../../assets/css/lightbox.css">
+	<script src="../../assets/js/lightbox-plus-jquery.min.js"></script>
+</head>
+  <title>Arty fart</title>
+<style>
+body {
+	width: fit-content;
+	height: fit-content;
+	margin: 10px auto 50px;
+	#flexbox {
+		display: flex;
+		height: 600px;
+	}
+}
+header {
+	width: 150px;
+	height: calc(100% - 10px) !important;
+	menu {
+		padding: 0;
+		li {
+			display: block;
+			cursor: pointer;
+			&:hover {
+				background: var(--lb) linear-gradient(to top, var(--ow) 5%, var(--lb) 45%, #b9daf8 70%, var(--ow));
+				box-shadow: inset 0 0 15px -5px #568bd9;
+			}
+		}
+	}
+}
+main {width: 600px;}
+.tab {
+	height: 100%;
+	&:not(:first-of-type) {display: none;}
+	.a div {
+		columns: 2;
+		column-gap: 5px;
+		img {width: 100%;}
+	}
+}
+@media (max-width: 800px) {
+body {#flexbox {display: block;}}
+header {width: 100%;height: fit-content !important;}
+main {width: 100%;}
+.tab {height: auto;}
+}
+</style>
+<body>
+<h1 class="h">Art</h1>
+<div id="flexbox">
+<header class="a">
+	<nav>
+		<a href="../../">Home</a>
+		<a href="../../sitemap.html">Sitemap</a>
+		<a>Comics</a>
+	</nav>
+  <menu>
+		<li class="h" onclick="openTab('main')">Main</li>
+		<li class="h" onclick="openTab('sketch')">Sketch</li>
+		<li class="h" onclick="openTab('other')">Not by Me</li>
+	</menu>
+	<p>Click the images to enlarge them.</p>
+</header>
+<main>
+	<section id="main" class="tab">
+		<h2 class="h">Main</h2>
+		<div class="a">
+			<div id="mainArt"></div>
+		</div>
+	</section>
+	<section id="sketch" class="tab">
+		<h2 class="h">Sketch</h2>
+		<div class="a">
+			<div id="sketchArt"></div>
+		</div>
+	</section>
+	<section id="other" class="tab">
+		<h2 class="h">Not by Me</h2>
+		<div class="a">
+			<div id="otherArt"></div>
+		</div>
+	</section>
+</main>
+</div>
+<script>
+async function populate() {
+	const requestURL = '../../assets/feed/art.json';
+	const request = new Request(requestURL);
+	const response = await fetch(request);
+	const json = await response.text();
+	const art = JSON.parse(json);
+	//populateArt(art);
+	populateMain(art);
+	populateSketch(art);
+	populateOther(art);
+}
+function populateMain(obj) {
+	const main = document.querySelector('#mainArt');
+	let mainArt = obj.art.filter(item => item.type == "main");
+	for (const piece of mainArt) {
+		main.innerHTML +=
+		`<a href="./${piece.img}" data-lightbox="main"
+		data-title="${piece.year} / ${piece.medium}<br>${piece.caption}">
+		<img loading="lazy" src="./${piece.img}" alt=""></a>`;
+	}
+}
+function populateSketch(obj) {
+	const sketch = document.querySelector('#sketchArt');
+	let sketchArt = obj.art.filter(item => item.type == "sketch");
+	for (const piece of sketchArt) {
+		sketch.innerHTML +=
+		`<a href="./${piece.img}" data-lightbox="main"
+		data-title="${piece.year} / ${piece.medium}<br>${piece.caption}">
+		<img loading="lazy" src="./${piece.img}" alt=""></a>`;
+	}
+}
+function populateOther(obj) {
+	const other = document.querySelector('#otherArt');
+	let otherArt = obj.art.filter(item => item.type == "other");
+	for (const piece of otherArt) {
+		other.innerHTML +=
+		`<a href="./${piece.img}" data-lightbox="main"
+		data-title="${piece.year} / ${piece.medium}<br>${piece.caption}">
+		<img loading="lazy" src="./${piece.img}" alt=""></a>`;
+	}
+}
+populate();
+</script>
+<script src="../../assets/js/tab.js"></script>
+<script src="../../assets/js/lightbox-option.js"></script>
+</body>
+</html>
