@@ -2,7 +2,7 @@ html {overflow-x: hidden;}
 body {
   display: grid;
   grid-template-columns: 200px 400px 200px;
-  grid-template-rows: 100px 230px 130px 60px 150px 35px;
+  grid-template-rows: 100px 230px 150px 60px 150px 35px;
   grid-template-areas:
   "header header header"
   "update main nav"
@@ -17,7 +17,6 @@ body {
 header {
 	grid-area: header;
 	svg {
-		background: #aaaaaa00;
 		text {
 			font: normal 100px gothik, 'Times New Roman', Times, serif;
 			fill: var(--ow);
